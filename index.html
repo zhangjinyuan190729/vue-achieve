@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p >{{msg}}</p>
+        <p v-text="msg"></p>
+        <p v-html="html"></p>
+        <button v-on:click="fn1"> 点我呀</button>
+        <div>
+            <div>
+                <h1>{{msg}}</h1>
+            </div>
+        </div>
+        <input type="text" v-model="car.name">
+        <p>{{car.name}}</p>
+        <p>{{car.color}}</p>
+        <p>{{msg}}</p>
+        <p>{{msg}}</p>
+        <p>{{msg}}</p>
+        <p>{{msg}}</p>
+    </div> 
+    <script src='./vue.js'></script> <!--vue 实例对象  -->
+    <script src='./compile.js'></script> <!--模板编译模块 -->
+    <script src='./observe.js'></script> <!--数据劫持模块 -->
+    <script src='./watcher.js'></script>
+    <!--dep发布订阅模块(收集每一个订阅者，并通知每一个订阅者更新数据)   
+        watcher订阅者  updata方法 统一更新数据 -->
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello vue',
+                html:'<p>I love you</p>',
+                car:{
+                    name:'东风日产',
+                    color:'red'
+                }
+            },
+            methods:{
+                fn1(){
+                    console.log(this);
+                }
+            },
+            created(){
+                this.$data.msg = '我爱你'
+            }
+        })
+    </script>
+</body>
+</html>
